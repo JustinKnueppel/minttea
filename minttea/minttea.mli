@@ -1,10 +1,8 @@
+module Minttea_cfg = Config
 open Riot
+module Config = Minttea_cfg
 
-(* module Config : sig *)
-(*   type t = { render_mode : [ `clear | `persist ]; fps : int } *)
-(* end *)
-(**)
-val config : ?render_mode:[ `clear | `persist ] -> ?fps:int -> unit -> Xconfig.t
+val config : ?render_mode:[ `clear | `persist ] -> ?fps:int -> unit -> Config.t
 
 module Event : sig
   type modifier = No_modifier | Ctrl
@@ -52,5 +50,5 @@ val app :
   unit ->
   'model App.t
 
-val run : ?config:Xconfig.t -> initial_model:'model -> 'model App.t -> unit
-val start : ?config:Xconfig.t -> 'model App.t -> initial_model:'model -> unit
+val run : ?config:Config.t -> initial_model:'model -> 'model App.t -> unit
+val start : ?config:Config.t -> 'model App.t -> initial_model:'model -> unit

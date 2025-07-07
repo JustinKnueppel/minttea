@@ -1,9 +1,11 @@
+module Minttea_cfg = Config
 open Riot
+module Config = Minttea_cfg
 
 type Message.t += Timer of unit Ref.t | Shutdown
-type 'model t = { app : 'model App.t; config : Xconfig.t }
+type 'model t = { app : 'model App.t; config : Config.t }
 
-let make ~app ~(config : Xconfig.t) = { app; config }
+let make ~app ~(config : Config.t) = { app; config }
 
 exception Exit
 

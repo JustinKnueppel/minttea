@@ -1,6 +1,8 @@
+module Minttea_cfg = Config
 open Riot
+module Config = Minttea_cfg
 
-val run : config:Xconfig.t -> runner:Pid.t -> unit
+val run : config:Config.t -> runner:Pid.t -> unit
 val render : Pid.t -> string -> unit
 val enter_alt_screen : Pid.t -> unit
 val exit_alt_screen : Pid.t -> unit
