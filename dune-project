@@ -13,13 +13,17 @@
 
 (license MIT)
 
+(pin
+ (url "git+https://github.com/JustinKnueppel/riot")
+ (package (name riot)))
+
 (package
  (name minttea)
  (synopsis "A fun, functional, and stateful way to build terminal apps in OCaml heavily inspired by Go's BubbleTea")
  (description "A longer description")
  (depends
    (ocaml (>= "5.1"))
-   (riot (>= "0.0.9"))
+   riot
    (mdx (and :with-test (>= "2.3.1")))
    (tty (>= "0.0.2"))
    uuseg)
