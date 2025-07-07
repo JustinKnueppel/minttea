@@ -45,7 +45,11 @@
         {
           devShells = {
             default = mkShell {
-              buildInputs = [ ocamlPackages.utop ];
+              buildInputs = with ocamlPackages; [
+                utop
+                ocaml
+                ocaml-lsp
+              ];
               inputsFrom = [
                 self'.packages.spices
                 self'.packages.default
