@@ -1,9 +1,9 @@
 open Riot
 
 type Message.t += Timer of unit Ref.t | Shutdown
-type 'model t = { app : 'model App.t; config : Config.t }
+type 'model t = { app : 'model App.t; config : Xconfig.t }
 
-let make ~app ~config = { app; config }
+let make ~app ~(config : Xconfig.t) = { app; config }
 
 exception Exit
 
@@ -27,7 +27,7 @@ and handle_input renderer app model event =
       Renderer.shutdown renderer;
       Logger.trace (fun f -> f "runner is waiting for renderer to finish ");
       wait_pids [ renderer ];
-      Logger.trace (fun f -> f "renderer finishied")
+      Logger.trace (fun f -> f "renderer finished")
   | () ->
       Renderer.render renderer view;
       loop renderer app model

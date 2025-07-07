@@ -3,9 +3,12 @@ module Event = Event
 module Command = Command
 module App = App
 module Program = Program
-module Config = Config
 
-let config ?(render_mode = `clear) ?(fps = 60) () = Config.{ render_mode; fps }
+(* module Config = struct *)
+(*   type t = { render_mode : [ `clear | `persist ]; fps : int } *)
+(* end *)
+
+let config ?(render_mode = `clear) ?(fps = 60) () = Xconfig.{ render_mode; fps }
 let app = App.make
 
 let run ?(config = config ()) ~initial_model app =
